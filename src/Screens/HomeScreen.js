@@ -15,13 +15,14 @@ import React from 'react';
 import BagSVG from '../Assets/bag.svg';
 import ThreeDots from '../Assets/three_dots.svg';
 import * as Progress from 'react-native-progress';
+import LinearGradient from 'react-native-linear-gradient';
 
 const HomeScreen = () => {
   
   const renderGroups = items => {
     return (<View
       style={{
-        height: 70,
+        height: 80,
         width: '90%',
         backgroundColor: 'white',
         borderRadius: 16,
@@ -32,10 +33,11 @@ const HomeScreen = () => {
         alignSelf: "center",
          elevation: 5,
         shadowColor: '#171717',
-        shadowOffset: {width: 0, height: 0},
-        shadowOpacity: 0.2,
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.3,
         shadowRadius: 3,
-        marginTop: 16,
+        marginTop: 8,
+        marginBottom: 16,
       }}>
       <View
         style={{
@@ -98,7 +100,7 @@ const HomeScreen = () => {
           style={{
             height: 20,
             width: 20,
-            backgroundColor: '#FFE4F2',
+            backgroundColor: 'white',
             borderRadius: 5,
             position: 'absolute',
             top: 16,
@@ -114,16 +116,16 @@ const HomeScreen = () => {
           Office Project
         </Text>
         <Text
+          numberOfLines={2}
           style={{
             fontSize: 16,
             color: 'black',
             fontWeight: '600',
-            marginBottom: 16,
+            marginBottom: 18,
           }}>
-          Grocery shopping app design
+          Grocery shopping app designn
         </Text>
-        {/* <View style ={{height: 7 ,width: '100%',borderRadius: 5, backgroundColor: "#EB9196" ,marginBottom: 5}}></View> */}
-
+      
         <Progress.Bar
           progress={0.3}
           width={210}
@@ -136,7 +138,8 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={{backgroundColor: 'white'}}>
-      <View
+      <ScrollView
+        scrollEnabled = {true}
         style={{
           height: '100%',
           width: '100%',
@@ -260,6 +263,9 @@ const HomeScreen = () => {
             <ThreeDots style={{}} />
           </TouchableOpacity>
         </View>
+        
+      
+       
 
         {/* ------- InProgress ------ */}
         <View
@@ -325,18 +331,39 @@ const HomeScreen = () => {
         </View>
 
         {/* ------- Task Group List ----- */}
-        <View style ={{width: "100%" }}>
+        
+        
+         <View style ={{width: "100%",}}>
+  
         <FlatList 
            renderItem={renderGroups}
-           data={[1,2,3,4,5,5]}
+           data={[1,2,3,1,2,1,2,3,1,2]}
            scrollEnabled = {false}
           />
+       
         </View>
-      </View>
+      
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    margin: 10,
+    color: '#ffffff',
+    backgroundColor: 'transparent',
+  },
+
+});
