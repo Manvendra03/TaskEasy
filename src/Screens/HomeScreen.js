@@ -1,12 +1,10 @@
 import {
   FlatList,
   Image,
-  Platform,
   SafeAreaView,
   StyleSheet,
   ScrollView,
   Text,
-  Touchable,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -18,71 +16,70 @@ import * as Progress from 'react-native-progress';
 import LinearGradient from 'react-native-linear-gradient';
 
 const HomeScreen = () => {
-  
   const renderGroups = items => {
-    return (<View
-      style={{
-        height: 80,
-        width: '90%',
-        backgroundColor: 'white',
-        borderRadius: 16,
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingVertical: 8,
-        paddingHorizontal: 16,
-        alignSelf: "center",
-         elevation: 5,
-        shadowColor: '#171717',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.3,
-        shadowRadius: 3,
-        marginTop: 8,
-        marginBottom: 16,
-      }}>
+    return (
       <View
         style={{
-          height: 43,
-          width: 43,
-          backgroundColor: '#FFE4F2',
-          borderRadius: 5,
-          justifyContent: "center",
-          alignItems: "center",
-          marginRight: 10,
+          height: 80,
+          width: '90%',
+          backgroundColor: 'white',
+          borderRadius: 16,
+          flexDirection: 'row',
+          alignItems: 'center',
+          paddingVertical: 8,
+          paddingHorizontal: 16,
+          alignSelf: 'center',
+          elevation: 5,
+          shadowColor: '#171717',
+          shadowOffset: {width: 0, height: 2},
+          shadowOpacity: 0.3,
+          shadowRadius: 3,
+          marginTop: 8,
+          marginBottom: 16,
         }}>
-          <BagSVG/>
-        </View>
-      <View style={{justifyContent: 'space-evenly'}}>
-        <Text
+        <View
           style={{
-            fontSize: 18,
-            color: 'black',
-            fontWeight: '500',
-            marginBottom: 3,
+            height: 43,
+            width: 43,
+            backgroundColor: '#FFE4F2',
+            borderRadius: 5,
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginRight: 10,
           }}>
-          Office Projects
-        </Text>
-        <Text style={{fontSize: 13, color: 'grey', fontWeight: 'normal'}}>
-          23 Tasks
-        </Text>
+          <BagSVG />
+        </View>
+        <View style={{justifyContent: 'space-evenly'}}>
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'black',
+              fontWeight: '500',
+              marginBottom: 3,
+            }}>
+            Office Projects
+          </Text>
+          <Text style={{fontSize: 13, color: 'grey', fontWeight: 'normal'}}>
+            23 Tasks
+          </Text>
+        </View>
+
+        <Progress.Circle
+          size={50}
+          progress={0.7}
+          thickness={4}
+          borderWidth={0}
+          strokeCap={'round'}
+          unfilledColor={'#FFE4F2'}
+          color="#F478B8"
+          direction={'counter-clockwise'}
+          showsText={true}
+          textStyle={{fontSize: 12, fontWeight: 'bold'}}
+          style={{position: 'absolute', right: 20}}
+        />
       </View>
-
-      <Progress.Circle
-        size={50}
-        progress={0.7}
-        thickness={4}
-        borderWidth={0}
-        strokeCap={'round'}
-        unfilledColor={'#FFE4F2'}
-        color="#F478B8"
-        direction={'counter-clockwise'}
-        showsText={true}
-        textStyle={{fontSize: 12, fontWeight: 'bold'}}
-        style={{position: 'absolute', right: 20}}
-      />
-    </View>);
-  }
-
-
+    );
+  };
 
   const renderItems = items => {
     return (
@@ -125,7 +122,7 @@ const HomeScreen = () => {
           }}>
           Grocery shopping app designn
         </Text>
-      
+
         <Progress.Bar
           progress={0.3}
           width={210}
@@ -137,14 +134,15 @@ const HomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{backgroundColor: 'white'}}>
+     <LinearGradient colors={['white','white','#d0c5f0']}>
+        <SafeAreaView style={{
+      // backgroundColor: 'white'
+    }}>
       <ScrollView
-        scrollEnabled = {true}
+        scrollEnabled={true}
         style={{
           height: '100%',
           width: '100%',
-          // paddingHorizontal: 16,
-          backgroundColor: '#FFFFFF',
         }}>
         {/*  ----- Greet Bar ----- */}
         <View
@@ -176,7 +174,7 @@ const HomeScreen = () => {
                 Hello !
               </Text>
               <Text style={{fontWeight: '700', fontSize: 18, color: 'black'}}>
-                Manvendra Patidar
+                Manvendra 
               </Text>
             </View>
             <Image
@@ -263,17 +261,13 @@ const HomeScreen = () => {
             <ThreeDots style={{}} />
           </TouchableOpacity>
         </View>
-        
-      
-       
-
         {/* ------- InProgress ------ */}
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             marginBottom: 20,
-            marginHorizontal: 16
+            marginHorizontal: 16,
           }}>
           <Text style={{fontSize: 20, fontWeight: 'bold', color: 'black'}}>
             In Progress
@@ -295,7 +289,7 @@ const HomeScreen = () => {
         <View
           style={{
             marginBottom: 20,
-            marginLeft: 16
+            marginLeft: 16,
           }}>
           <FlatList
             horizontal
@@ -331,39 +325,22 @@ const HomeScreen = () => {
         </View>
 
         {/* ------- Task Group List ----- */}
-        
-        
-         <View style ={{width: "100%",}}>
-  
-        <FlatList 
-           renderItem={renderGroups}
-           data={[1,2,3,1,2,1,2,3,1,2]}
-           scrollEnabled = {false}
+
+        <View style={{width: '100%'}}>
+          <FlatList
+            renderItem={renderGroups}
+            data={[1, 2, 3, 1, 2, 1, 2, 3, 1, 2]}
+            scrollEnabled={false}
           />
-       
         </View>
-      
       </ScrollView>
     </SafeAreaView>
+     </LinearGradient>
   );
 };
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  linearGradient: {
-    flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderRadius: 5
-  },
-  buttonText: {
-    fontSize: 18,
-    fontFamily: 'Gill Sans',
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-  },
-
+ 
 });
